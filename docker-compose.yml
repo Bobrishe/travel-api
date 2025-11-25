@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  postgres-data:
+    container_name: postgres-data
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespass
+      POSTGRES_DB: postgres
+
+  auth-api:
+    build: ./auth-api
+    container_name: auth-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-data
+      - data-api
+
+  data-api:
+    build: ./data-api
+    container_name: data-api
+    ports:
+      - "8081:8081"
