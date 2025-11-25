@@ -1,0 +1,6 @@
+server:
+  port: 8081
+
+env:
+  x-internal-token:
+    internal
