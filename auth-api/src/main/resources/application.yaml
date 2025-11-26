@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgrespass}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+data-api:
+  url: ${DATA_API_URL:http://localhost:8081}
+  token: ${INTERNAL_TOKEN:internal}
+
+jwt:
+  secret: ${JWT_SECRET:npbdEE0cjvPwAjYBqSkXKaEUp06Qi5J1jjugqzL3BkU4knpqFVn8vaxSGRq1rfUMSEdESDLutbpNkqCQFmqX2}
+  lifetime: 15m
+

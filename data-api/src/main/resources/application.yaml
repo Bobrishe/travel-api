@@ -1,6 +1,4 @@
 server:
   port: 8081
 
-env:
-  x-internal-token:
-    internal
+INTERNAL_TOKEN: ${X_INTERNAL_TOKEN:internal}

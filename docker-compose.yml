@@ -8,15 +8,22 @@ services:
       - "5432:5432"
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgrespass
-      POSTGRES_DB: postgres
+      POSTGRES_USER: ${USER}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_URL: ${POSTGRES_URL}
 
   auth-api:
     build: ./auth-api
     container_name: auth-api
     ports:
       - "8080:8080"
+    environment:
+      POSTGRES_USER: ${USER}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_URL: ${POSTGRES_URL}
+      X_INTERNAL_TOKEN: ${INTERNAL_TOKEN}
+      JWT_SECRET: ${JWT_SECRET}
+      DATA_API_URL: "http://data-api:8081"
     depends_on:
       - postgres-data
       - data-api
@@ -26,3 +33,6 @@ services:
     container_name: data-api
     ports:
       - "8081:8081"
+    environment:
+      X_INTERNAL_TOKEN: ${INTERNAL_TOKEN}
+
