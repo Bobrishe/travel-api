@@ -12,17 +12,17 @@ docker compose up -d --build
 
 Available requests
 
-curl -X POST http://localhost:8080/api/auth/register -H "Content-Type: application/json" -d '{"email":"a@a.com","password":"pass"}'
+curl -X POST http://localhost:8080/api/auth/register -H "Content-Type: application/json" -d '{"email":"login@main.com","password":"somepassword"}'
 response: 201
 * You can create users just with unique emails
 
-curl -X POST http://localhost:8080/api/auth/login -H "Content-Type: application/json" -d '{"email":"a@a.com","password":"pass"}'
+curl -X POST http://localhost:8080/api/auth/login -H "Content-Type: application/json" -d '{"email":"login@mail.com","password":"somepassword"}'
 response: 200 <token>
 * If is all correct, you get JWT token for next step. IMPORTANT! JWH has a lifetime, 20 minutes by default, then you should create another.
 ** If you get an error, check credentials
 
-curl -X POST http://localhost:8080/api/process -H "Authorization: Bearer <JWT_TOKEN>" -H "Content-Type: application/json" -d '{"text":"hello"}'
-response: 200 { "result": "TRANSFORMED_TEXT" }
+curl -X POST http://localhost:8080/api/process -H "Authorization: Bearer <JWT_TOKEN>" -H "Content-Type: application/json" -d '{"text":"transform_me"}'
+response: 200 { "result": "EM_MROFSNART" }
 
 ! If you have a failed response, try to turn to the previous step. Check the login/password or JWT.
 
