@@ -11,8 +11,10 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler({NullMessageException.class,
             AuthenticationException.class,
+            UserExistException.class,
+            UserNotFoundException.class,
             NullMessageException.class})
-    public ResponseEntity<String> handle(NullMessageException exception) {
+    public ResponseEntity<String> handle(Exception exception) {
         return new ResponseEntity(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 

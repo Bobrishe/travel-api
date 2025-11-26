@@ -27,7 +27,7 @@ public class ProcessingController {
 
         logService.createNewLog(messageDto.text(),response);
 
-        return new DataApiResponse("result", response);
+        return new DataApiResponse(response);
     }
 
 }
