@@ -4,8 +4,6 @@ This repository contains two small applications (auth-api and data-api) and a Po
 
 To run the app, use commands below from the parent folder:
 
-mvn -f auth-api/pom.xml clean package -DskipTests
-mvn -f data-api/pom.xml clean package -DskipTests
 docker compose up -d --build
 
 !Important! Docker is using .env file, also default ports are 8080, 8081, 5432 (Main app on port 8080)
